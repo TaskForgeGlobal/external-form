@@ -1,4 +1,3 @@
-import React from 'react';
 import TaskforgeLogoSvg from './assets/svgs/taskforge-logo';
 import './index.css'
 

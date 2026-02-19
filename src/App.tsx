@@ -24,7 +24,6 @@ function App() {
               <p className="text-base text-[#535862] mb-6 max-w-[450px] mx-auto">
                 Collect data efficiently and securely with Taskforge forms. Use this platform to manage your requests.
               </p>
-
               {/* CTA Button */}
               <a
                 rel='noopener'

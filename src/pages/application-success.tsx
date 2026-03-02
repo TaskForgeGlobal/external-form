@@ -12,7 +12,7 @@ export default function ApplicationSuccess({ is_embed }: { is_embed: boolean }) 
       deleteQueryParam('stage')
       return;
     }
-    window.close();
+    window.location.href = "/";
   }
   return (
     <div className="flex items-center justify-center w-full h-full">

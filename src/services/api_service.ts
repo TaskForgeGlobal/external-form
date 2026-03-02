@@ -4,9 +4,9 @@ import { config } from "../utils/config";
 
 // Define API base URLs
 const API_URLS = {
-  FORM: `${config.API_BASE_URL}/forms/v1`,
+  FORM: `${config.API_BASE_URL}/e-forms/v1`,
   WORKFLOW: `${config.API_BASE_URL}/workflows/api/v1`,
-  USER: `${config.API_BASE_URL}/users/v1`,
+  USER: `${config.API_BASE_URL}/profile/v1`,
   DOCUMENT: `${config.API_BASE_URL}/documents/v1`,
   PAYMENT: `${config.API_BASE_URL}/payments/api/v1`,
   AUDIT: `${config.API_BASE_URL}/audit/v1`,

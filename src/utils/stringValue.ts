@@ -1,7 +1,5 @@
-import { ParsedTypes } from "./constants";
-
-export function stringValue(type: string, value: any) {
-  if (ParsedTypes.includes(type)) {
+export function stringValue(value: any) {
+  if (typeof value !== "string") {
     return JSON.stringify(value);
   }
 

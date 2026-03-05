@@ -89,7 +89,7 @@ export default function NewApplicationRequest() {
         requestName: name,
         formValues: filteredValues.map((i) => ({
           ...i,
-          value: stringValue(i.type, i.value),
+          value: stringValue(i.value),
         })),
         formId,
         activityInstanceId,

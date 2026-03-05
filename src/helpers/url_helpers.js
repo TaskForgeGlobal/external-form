@@ -9,6 +9,8 @@ const urls = {
 
   GET_FORMS: "/forms/get-all",
   GET_FORM: "/forms/get",
+  GET_REDIRECT_FORM: "forms/get-submitted-form",
+
 
   GET_ALL_GROUPS: "/organization/get-all-groups",
   GET_GROUP_MEMBERS: "/organization/get-group-members",

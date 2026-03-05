@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { FormViewer } from "@arudovwen/form-builder-react";
 
-import { addFormExternal, getForm } from "../services/formservice.js";
+import { addFormExternal, getForm, getRedirectData } from "../services/formservice.js";
 import TaskforgeLogoSvg from "../assets/svgs/taskforge-logo";
 import AppButton from "../components/AppButton";
 import { useLocationUtils } from "../hooks/useLocationUtils";
@@ -36,6 +36,7 @@ export default function NewApplicationRequest() {
   const [submitLoading, setSubmitLoading] = useState(false);
   const [formInfo, setFormInfo] = useState<FormInfo | null>(null);
   const [formData, setFormData] = useState<any>(null);
+ const [formSettings, setFormSettings] = useState<any>(null);
 
   async function getFormData() {
     if (!formId) return;
@@ -57,9 +58,24 @@ export default function NewApplicationRequest() {
     }
   }
 
+  const getFormSettings = () => {
+    getRedirectData({ id: formId }).then((res) => {
+      if (res) {
+        const formSettings = res.data.data || {};
+        if (formSettings?.data) {
+          const values = JSON.parse(formSettings.data);
+    
+          setFormSettings(values);
+        }
+      }
+    });
+  };
+
   useEffect(() => {
     getFormData();
+    getFormSettings();
   }, [formId]);
+
 
   async function submitFormData(values: any[]) {
     try {
@@ -134,7 +150,7 @@ export default function NewApplicationRequest() {
             </div>
           </div>
         ) : (
-          <ApplicationSuccess is_embed={is_embed} />
+          <ApplicationSuccess is_embed={is_embed} formSettings={formSettings} />
         )}
 
         <div className="mt-[55px] flex justify-center text-[#535862] font-medium">

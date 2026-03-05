@@ -1,18 +1,28 @@
-
 import AppButton from "../components/AppButton";
 import { useQueryParam } from "../hooks/useQueryParams";
 import FormSuccessSvg from "./form-success";
 
-export default function ApplicationSuccess({ is_embed }: { is_embed: boolean }) {
+export default function ApplicationSuccess({
+  is_embed,
+  formSettings,
+}: {
+  is_embed: boolean;
+  formSettings: any;
+}) {
   const { deleteQueryParam } = useQueryParam();
 
   function closeWindow() {
     // ✅ If embedded → remove `stage` query param instead of reload
     if (is_embed) {
-      deleteQueryParam('stage')
+      deleteQueryParam("stage");
       return;
     }
-    window.location.href = "/";
+    if (formSettings?.redirectOnCompletion) {
+      window.location.href = formSettings.redirectUrl;
+      return;
+    }
+
+    window.location.href = "https://thetaskforge.com";
   }
   return (
     <div className="flex items-center justify-center w-full h-full">

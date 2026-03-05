@@ -1,17 +1,16 @@
-// @ts-nocheck 
+// @ts-nocheck
 import urls from "../helpers/url_helpers";
 import { cleanObject } from "../utils/cleanObject";
 import { DataService } from "./api_service";
 
-const {  post } = DataService;
-
+const { post } = DataService;
 
 export const getForms = (payload: any) => {
   return post(
     `${urls.GET_FORMS}?${new URLSearchParams(payload)}`,
     payload,
     {},
-    "FORM"
+    "FORM",
   );
 };
 export const getForm = (data: any) => {
@@ -19,7 +18,7 @@ export const getForm = (data: any) => {
     `${urls.GET_FORM}?${new URLSearchParams(cleanObject(data))}`,
     data,
     {},
-    "FORM"
+    "FORM",
   );
 };
 
@@ -28,6 +27,15 @@ export const addFormExternal = (data: any) => {
     `/forms/external/add-data?formId=${data?.formId}`,
     data,
     {},
-    "FORM"
+    "FORM",
+  );
+};
+
+export const getRedirectData = async (data) => {
+  return await post(
+    `${urls.GET_REDIRECT_FORM}?formId=${data?.id}`,
+    data,
+    {},
+    "FORM",
   );
 };

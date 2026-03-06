@@ -1,7 +1,11 @@
 import { useEffect, useState } from "react";
 import { FormViewer } from "@arudovwen/form-builder-react";
 
-import { addFormExternal, getForm, getRedirectData } from "../services/formservice.js";
+import {
+  addFormExternal,
+  getForm,
+  getRedirectData,
+} from "../services/formservice.js";
 import TaskforgeLogoSvg from "../assets/svgs/taskforge-logo";
 import AppButton from "../components/AppButton";
 import { useLocationUtils } from "../hooks/useLocationUtils";
@@ -36,7 +40,7 @@ export default function NewApplicationRequest() {
   const [submitLoading, setSubmitLoading] = useState(false);
   const [formInfo, setFormInfo] = useState<FormInfo | null>(null);
   const [formData, setFormData] = useState<any>(null);
- const [formSettings, setFormSettings] = useState<any>(null);
+  const [formSettings, setFormSettings] = useState<any>(null);
 
   async function getFormData() {
     if (!formId) return;
@@ -48,7 +52,7 @@ export default function NewApplicationRequest() {
         setFormData(
           data.data?.builderMetaInfo
             ? JSON.parse(data.data?.builderMetaInfo)
-            : {}
+            : {},
         );
       }
     } catch (error: any) {
@@ -64,7 +68,7 @@ export default function NewApplicationRequest() {
         const formSettings = res.data.data || {};
         if (formSettings?.data) {
           const values = JSON.parse(formSettings.data);
-    
+
           setFormSettings(values);
         }
       }
@@ -76,11 +80,10 @@ export default function NewApplicationRequest() {
     getFormSettings();
   }, [formId]);
 
-
   async function submitFormData(values: any[]) {
     try {
       const filteredValues = values.filter(
-        (i) => !ExcludedFormTypes.includes(i.type)
+        (i) => !ExcludedFormTypes.includes(i.type),
       );
       setSubmitLoading(true);
 
@@ -114,16 +117,18 @@ export default function NewApplicationRequest() {
   return (
     <div className={is_embed ? "" : "px-10 py-20"}>
       <div className={is_embed ? "" : "max-w-[650px] w-full mx-auto"}>
-
-        {!hide_title &&
+        {!hide_title && (
           <div className="px-6 text-center rounded-lg mb-7">
             <div className="px-6 text-center rounded-lg mb-7">
               <h1 className="form_title font-semibold text-[#363F72] mb-2 capitalize">
                 {formInfo?.name}
               </h1>
-              <p className="form_desc font-medium text-[#363F72]">{formInfo?.description}</p>
-            </div> </div>
-        }
+              <p className="form_desc font-medium text-[#363F72]">
+                {formInfo?.description}
+              </p>
+            </div>{" "}
+          </div>
+        )}
 
         {!stage ? (
           <div className="border border-[#D5D9EB] rounded-lg pb-4 bg-white">
@@ -134,6 +139,7 @@ export default function NewApplicationRequest() {
                 onSubmit={SubmitOptions[action ?? "submit"]}
                 config={config}
                 renderType="single"
+                uploadUrl={`${import.meta.env.VITE_API_URL ?? "https://dev.api.gateway.thetaskforge.co"}/workflows/api/v1/fileupload/upload-document`}
               >
                 <div className="w-full">
                   <div className="flex justify-end gap-x-3">

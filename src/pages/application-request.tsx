@@ -138,7 +138,7 @@ export default function NewApplicationRequest() {
                 form_data={formData}
                 onSubmit={SubmitOptions[action ?? "submit"]}
                 config={config}
-                renderType="single"
+                renderType={formInfo?.type || "single"}
                 uploadUrl={`${import.meta.env.VITE_API_URL ?? "https://dev.api.gateway.thetaskforge.co"}/workflows/api/v1/fileupload/upload-document`}
               >
                 <div className="w-full">

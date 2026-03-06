@@ -39,3 +39,7 @@ export const getRedirectData = async (data) => {
     "FORM",
   );
 };
+
+export const getRequestDetail = ({ workflowId, formId }) => {
+  return get(`${urls.REQUEST_DETAIL}/${workflowId}/${formId}`, {}, "PROCESS");
+};

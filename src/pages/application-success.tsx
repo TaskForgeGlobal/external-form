@@ -22,7 +22,7 @@ export default function ApplicationSuccess({
       return;
     }
 
-    window.location.href = "https://thetaskforge.com";
+    window.location.href = "https://thetaskforge.co";
   }
   return (
     <div className="flex items-center justify-center w-full h-full">

@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { FormViewer } from "@arudovwen/form-builder-react";
-
+import("@arudovwen/form-builder-react/dist/index.css");
 import {
   addFormExternal,
   getForm,

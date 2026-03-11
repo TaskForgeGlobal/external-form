@@ -115,7 +115,7 @@ export default function NewApplicationRequest() {
   };
 
   return (
-    <div className={is_embed ? "" : "px-10 py-20"}>
+    <div className={is_embed ? "embed_container" : "px-10 py-20"}>
       <div className={is_embed ? "" : "max-w-[650px] w-full mx-auto"}>
         {!hide_title && (
           <div className="px-6 text-center rounded-lg mb-7">
@@ -131,8 +131,14 @@ export default function NewApplicationRequest() {
         )}
 
         {!stage ? (
-          <div className="border border-[#D5D9EB] rounded-lg pb-4 bg-white">
-            <div className="min-h-[200px] application">
+          <div
+            className={
+              is_embed
+                ? "embed_form__container"
+                : "border border-[#D5D9EB] rounded-lg pb-4 bg-white application_form__container"
+            }
+          >
+            <div className="min-h-[200px] application_form">
               <FormViewer
                 loading={formLoading}
                 form_data={formData}
